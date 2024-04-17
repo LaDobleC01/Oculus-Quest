@@ -1,0 +1,35 @@
+//SalirAplicacion: Este sólo se aplica al botón de salir de la aplicación en la pantalla de  Inicio: 
+
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SalirAplicacion : MonoBehaviour
+{
+    // Referencia al botón en el Canvas
+    public Button quitButton;
+
+    void Start()
+    {
+        // Asegurarse de que el botón fue asignado en el Inspector
+        if (quitButton != null)
+        {
+            // Agregar un listener al botón para que se ejecute el método QuitGame cuando se haga clic en él
+            quitButton.onClick.AddListener(QuitGame);
+        }
+        else
+        {
+            Debug.LogWarning("El botón no está asignado en el Inspector.");
+        }
+    }
+
+    // Método para salir del juego
+    void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // Salir del modo de reproducción en el Editor de Unity
+#else
+            Application.Quit(); // Salir de la aplicación en tiempo de ejecución
+#endif
+    }
+}
+
