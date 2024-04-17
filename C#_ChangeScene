@@ -1,0 +1,25 @@
+
+CambiarDeEscena: este es el script que se tiene que poner al botón de canvas para que al presionarlo cambia de escena:
+
+         using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
+public class CambiarDeEscena : MonoBehaviour, IPointerClickHandler
+{
+    public string CambiarEscena;
+
+
+
+    private Renderer _myRenderer;
+
+
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        SceneManager.LoadScene(CambiarEscena);
+    }
+
+
+}
+
